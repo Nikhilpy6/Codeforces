@@ -2,14 +2,12 @@ t = int(input())
 while t:
     n, x = map(int, input().split())
     a = list(map(int, input().split()))
+    last = 0
     m = 0
     for i in range(n):
-        if i == 0:
-            d = a[i] - 0
-        elif i == n - 1:
-            d = 2 * (x - a[i])
-        else:
-            d = a[i] - a[i - 1]
-        m = max(m, d)
+        m = max(m, a[i] - last)
+        last = a[i]
+
+    m = max(m, 2 * (x - last))
 
     print(m)
